@@ -1,0 +1,3 @@
+<aura:component implements="lightning:actionOverride,force:hasSObjectName,force:hasRecordId" access="global">
+    <c:beatNewModal onclose="{!c.handleClose}" />
+</aura:component>

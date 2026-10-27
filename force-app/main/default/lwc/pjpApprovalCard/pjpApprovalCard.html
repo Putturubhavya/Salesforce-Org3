@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="PJP Approval Actions" icon-name="standard:approval">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small slds-grid_vertical-align-center">
+                <div>
+                    <span class="slds-text-title_bold slds-m-right_x-small">Status:</span>
+                    <lightning-badge label={statusLabel} class={statusClass}></lightning-badge>
+                </div>
+                <template if:true={approverName}>
+                    <div class="slds-text-body_regular">
+                        <span class="slds-text-color_weak">Assigned Approver:</span>
+                        <strong class="slds-m-left_xx-small">{approverName}</strong>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="slds-m-top_small slds-grid slds-grid_align-end">
+                <template if:true={canSubmit}>
+                    <lightning-button 
+                        variant="brand" 
+                        label="Submit for Approval" 
+                        icon-name="utility:send" 
+                        onclick={handleSubmit} 
+                        disabled={isLoading}>
+                    </lightning-button>
+                </template>
+
+                <template if:true={isPending}>
+                    <lightning-button 
+                        variant="success" 
+                        label="Approve" 
+                        icon-name="utility:check" 
+                        class="slds-m-right_x-small" 
+                        onclick={handleApprove} 
+                        disabled={isLoading}>
+                    </lightning-button>
+                    <lightning-button 
+                        variant="destructive" 
+                        label="Reject" 
+                        icon-name="utility:close" 
+                        onclick={handleReject} 
+                        disabled={isLoading}>
+                    </lightning-button>
+                </template>
+            </div>
+
+            <template if:true={isApproved}>
+                <div class="slds-notify slds-notify_alert slds-alert_success slds-m-top_small alert-banner" role="alert">
+                    <span class="slds-assistive-text">Approved</span>
+                    <h2>This Permanent Journey Plan has been approved. Associated Employee PJP status is Approved.</h2>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

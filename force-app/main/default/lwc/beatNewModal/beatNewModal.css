@@ -1,0 +1,11 @@
+.section-header {
+    background-color: #f3f3f3;
+    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    color: #181818;
+}
+
+.required-legend {
+    color: #444;
+}
